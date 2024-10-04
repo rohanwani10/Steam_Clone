@@ -4,7 +4,8 @@ import { spawn } from "child_process";
 import express from "express";
 import { Server as SocketIO } from "socket.io";
 const myVariable = require("./public/script");
-
+require("dotenv").config();
+const PORT = process.env.PORT || 3000;
 const app = express();
 const server = http.createServer(app);
 const io = new SocketIO(server);
@@ -73,4 +74,4 @@ io.on("connection", (socket) => {
   });
 });
 
-server.listen(3000, () => console.log(`HTTP Server is runnning on PORT 3000`));
+server.listen(PORT, () => console.log(`HTTP Server is runnning on PORT 3000`));
